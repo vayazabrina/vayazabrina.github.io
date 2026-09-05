@@ -4,536 +4,357 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Vaya Zabrina Azahra — Portfolio</title>
-<meta name="description" content="Portfolio Vaya Zabrina Azahra — Fresh Graduate Informatika, Machine Learning & Frontend Web Developer" />
+<meta name="description" content="Portfolio Vaya Zabrina Azahra — Machine Learning & Data Analysis, Fresh Graduate Informatika" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    darkMode: 'class',
-    theme: {
-      extend: {
-        colors: {
-          ink: { 950: '#15120F', 900: '#1D1813', 800: '#2A2219' },
-          cloud: { 50: '#FAF8F5', 100: '#F2EEE7', 200: '#E7E0D4' },
-          amber: { 400:'#E3A15E', 500:'#D68A44', 600:'#C2793D', 700:'#9F5F2C' },
-          moss: { 400:'#8FA06E' },
-        },
-        fontFamily: {
-          display: ['Sora', 'sans-serif'],
-          body: ['Inter', 'sans-serif'],
-          mono: ['JetBrains Mono', 'monospace'],
-        },
-      }
-    }
-  }
-</script>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-  html { scroll-behavior: smooth; }
-  body { background-color: #FAF8F5; color: #1D1813; }
-  .dark body { background-color: #15120F; color: #F2EEE7; }
-  ::selection { background: #D68A44; color: #15120F; }
-
-  .grad-text { background: linear-gradient(90deg,#C2793D,#E3A15E); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .grad-btn { background: linear-gradient(90deg,#C2793D,#E3A15E); }
-  .grad-ring { background: conic-gradient(from 180deg, #8FA06E, #E3A15E, #C2793D, #8FA06E); }
-
-  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
-  .reveal.is-visible { opacity: 1; transform: translateY(0); }
-
-  .card { background: #FFFFFF; border: 1px solid #E7E0D4; transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease; }
-  .dark .card { background: #1D1813; border-color: #2A2219; }
-  .card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -20px rgba(0,0,0,0.15); border-color: #E3A15E; }
-
-  .tag { background: #F2EEE7; color: #4A3E2E; border: 1px solid #E7E0D4; }
-  .dark .tag { background: #2A2219; color: #E7E0D4; border-color: #3A2F22; }
-
-  .navlink { position: relative; }
-  .navlink::after { content:''; position:absolute; left:0; bottom:-4px; width:0; height:2px; background:#D68A44; transition: width .3s ease; }
-  .navlink:hover::after, .navlink.active::after { width:100%; }
-  .navlink.active { color:#C2793D; font-weight:600; }
-
-  .filter-btn.active { background:#1D1813; color:#FAF8F5; }
-  .dark .filter-btn.active { background:#F2EEE7; color:#15120F; }
-
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    .reveal { opacity: 1; transform: none; transition: none; }
+  :root{
+    --bg: #120E17;
+    --bg-alt: #1A1522;
+    --panel: #1E1828;
+    --line: #2E2638;
+    --text: #F1ECF7;
+    --text-dim: #B6ACC4;
+    --violet: #8B5CF6;
+    --violet-deep: #6D28D9;
+    --plum: #C084D8;
+    --wine: #7A2E4A;
   }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+  }
+  h1,h2,h3{ font-family:'Fraunces',serif; margin:0; }
+  a{ color:inherit; text-decoration:none; }
+  .mono{ font-family:'IBM Plex Mono',monospace; }
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 24px; }
 
-  ::-webkit-scrollbar { width: 8px; }
-  ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: #D68A44; border-radius: 8px; }
+  /* NAV */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:40;
+    background:rgba(18,14,23,0.85); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .navrow{ display:flex; align-items:center; justify-content:space-between; height:64px; }
+  .brand{ font-family:'Fraunces',serif; font-weight:600; font-size:1.15rem; }
+  .brand span{ color:var(--violet); }
+  nav{ display:flex; gap:28px; font-size:0.9rem; color:var(--text-dim); }
+  nav a:hover{ color:var(--text); }
+  .cta-btn{
+    background:linear-gradient(135deg,var(--violet-deep),var(--violet));
+    color:#fff; padding:9px 20px; border-radius:6px; font-size:0.85rem; font-weight:600;
+  }
+  .navwrap{ display:flex; align-items:center; gap:24px; }
+  @media(max-width:800px){ nav{ display:none; } }
+
+  /* HERO */
+  .hero{ padding:150px 0 90px; position:relative; overflow:hidden; }
+  .hero::before{
+    content:''; position:absolute; top:-120px; right:-120px; width:420px; height:420px;
+    background:radial-gradient(circle, rgba(139,92,246,0.25), transparent 70%);
+  }
+  .hero-grid{ display:grid; grid-template-columns:1.2fr 0.8fr; gap:56px; align-items:center; position:relative; }
+  @media(max-width:800px){ .hero-grid{ grid-template-columns:1fr; } }
+  .eyebrow{ color:var(--plum); font-size:0.85rem; margin-bottom:14px; }
+  .hero h1{ font-size:3rem; font-weight:600; line-height:1.1; margin-bottom:18px; }
+  .hero h1 em{ font-style:normal; color:var(--plum); }
+  .hero p.lead{ color:var(--text-dim); font-size:1.05rem; max-width:520px; margin-bottom:28px; }
+  .btnrow{ display:flex; gap:12px; flex-wrap:wrap; }
+  .btn-primary{ background:linear-gradient(135deg,var(--violet-deep),var(--violet)); color:#fff; padding:12px 24px; border-radius:6px; font-weight:600; font-size:0.9rem; }
+  .btn-ghost{ border:1px solid var(--line); padding:12px 24px; border-radius:6px; font-weight:600; font-size:0.9rem; }
+  .btn-ghost:hover{ border-color:var(--violet); }
+
+  .photo-frame{ width:260px; height:320px; margin-left:auto; border-radius:10px; overflow:hidden; border:1px solid var(--line); position:relative; }
+  .photo-frame img{ width:100%; height:100%; object-fit:cover; display:block; }
+  @media(max-width:800px){ .photo-frame{ margin:0 auto; } }
+
+  .statrow{ display:flex; gap:40px; margin-top:40px; border-top:1px solid var(--line); padding-top:24px; }
+  .stat b{ display:block; font-family:'Fraunces',serif; font-size:1.6rem; }
+  .stat span{ font-size:0.8rem; color:var(--text-dim); }
+
+  /* SECTION shared */
+  section{ padding:80px 0; border-top:1px solid var(--line); }
+  .sec-label{ color:var(--plum); font-size:0.85rem; margin-bottom:8px; }
+  .sec-title{ font-size:2rem; font-weight:600; margin-bottom:36px; max-width:560px; }
+
+  /* FEATURED THESIS PROJECT */
+  .feature-card{
+    background:linear-gradient(160deg, var(--panel), var(--bg-alt));
+    border:1px solid var(--line); border-radius:14px; padding:40px;
+  }
+  .feature-tag{ display:inline-block; background:rgba(139,92,246,0.15); color:var(--plum); border:1px solid rgba(139,92,246,0.3); padding:5px 14px; border-radius:100px; font-size:0.78rem; margin-bottom:18px; }
+  .feature-card h3{ font-size:1.6rem; margin-bottom:14px; max-width:640px; }
+  .feature-card p{ color:var(--text-dim); max-width:640px; margin-bottom:22px; }
+  .pillrow{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
+  .pill{ background:var(--bg-alt); border:1px solid var(--line); color:var(--text-dim); font-size:0.78rem; padding:5px 12px; border-radius:100px; }
+  .feature-photo{ width:100%; border-radius:10px; margin-bottom:24px; border:1px solid var(--line); display:block; }
+
+  /* CERT GRID */
+  .cert-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  @media(max-width:800px){ .cert-grid{ grid-template-columns:1fr; } }
+  .cert-card{ background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:26px; }
+  .cert-card .yr{ color:var(--plum); font-size:0.78rem; margin-bottom:10px; }
+  .cert-card h4{ font-family:'Fraunces',serif; font-size:1.1rem; margin-bottom:8px; }
+  .cert-card p{ color:var(--text-dim); font-size:0.88rem; margin:0; }
+
+  /* EXPERIENCE TIMELINE */
+  .exp-item{ display:grid; grid-template-columns:150px 1fr; gap:24px; padding:26px 0; border-bottom:1px solid var(--line); }
+  .exp-item:last-child{ border-bottom:none; }
+  @media(max-width:700px){ .exp-item{ grid-template-columns:1fr; gap:6px; } }
+  .exp-date{ color:var(--text-dim); font-size:0.85rem; }
+  .exp-item h4{ font-family:'Fraunces',serif; font-size:1.15rem; margin-bottom:4px; }
+  .exp-org{ color:var(--plum); font-size:0.88rem; margin-bottom:10px; }
+  .exp-item p{ color:var(--text-dim); font-size:0.92rem; margin:0 0 12px; max-width:600px; }
+
+  /* SKILLS */
+  .skill-cols{ display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:32px; }
+  @media(max-width:800px){ .skill-cols{ grid-template-columns:1fr; } }
+  .skill-cols h4{ font-size:0.95rem; margin-bottom:14px; color:var(--text); }
+
+  /* CONTACT */
+  .contact-box{
+    background:linear-gradient(135deg,var(--violet-deep),var(--wine));
+    border-radius:16px; padding:56px; text-align:center;
+  }
+  .contact-box h3{ font-size:1.7rem; margin-bottom:10px; }
+  .contact-box p{ color:rgba(255,255,255,0.8); max-width:440px; margin:0 auto 26px; }
+  .contact-links{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-top:36px; }
+  .contact-links a{ background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.25); padding:10px 20px; border-radius:8px; font-size:0.88rem; }
+  .contact-links a:hover{ background:rgba(255,255,255,0.18); }
+
+  footer{ padding:32px 0; text-align:center; color:var(--text-dim); font-size:0.82rem; }
 </style>
 </head>
-<body class="font-body antialiased">
+<body>
 
-<header class="fixed top-0 inset-x-0 z-30 backdrop-blur-md bg-cloud-50/80 dark:bg-ink-950/80 border-b border-cloud-200 dark:border-ink-800">
-  <div class="max-w-6xl mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
-    <a href="#top" class="font-display font-bold text-lg tracking-tight">Vaya<span class="grad-text">.</span></a>
-
-    <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-ink-900/70 dark:text-cloud-100/70">
-      <a href="#home" class="navlink" data-nav>Home</a>
-      <a href="#profil" class="navlink" data-nav>About</a>
-      <a href="#pengalaman" class="navlink" data-nav>Experience</a>
-      <a href="#proyek" class="navlink" data-nav>Projects</a>
-      <a href="#skill" class="navlink" data-nav>Skills</a>
-      <a href="#kontak" class="navlink" data-nav>Contact</a>
-    </nav>
-
-    <div class="flex items-center gap-3">
-      <button id="themeToggle" aria-label="Toggle dark mode" class="w-9 h-9 rounded-full flex items-center justify-center border border-cloud-200 dark:border-ink-800 hover:border-amber-500 transition-colors">
-        <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-        <svg id="iconSun" class="hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-      </button>
-      <a href="mailto:vzabrina8@gmail.com" class="hidden sm:inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-full grad-btn text-white hover:opacity-90 transition-opacity">
-        Contact Me
-      </a>
-      <button id="menuBtn" class="lg:hidden w-9 h-9 flex items-center justify-center" aria-label="Buka menu">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>
+<header>
+  <div class="wrap navrow">
+    <a href="#top" class="brand">Vaya<span>.</span></a>
+    <div class="navwrap">
+      <nav>
+        <a href="#about">Tentang</a>
+        <a href="#thesis">Skripsi</a>
+        <a href="#sertifikasi">Sertifikasi</a>
+        <a href="#pengalaman">Pengalaman</a>
+        <a href="#skill">Skill</a>
+      </nav>
+      <a href="mailto:vzabrina8@gmail.com" class="cta-btn">Hubungi Saya</a>
     </div>
-  </div>
-  <div id="mobileMenu" class="lg:hidden hidden flex-col px-6 pb-4 text-sm font-medium text-ink-900/80 dark:text-cloud-100/80">
-    <a href="#home" class="py-2.5 border-b border-cloud-200 dark:border-ink-800">Home</a>
-    <a href="#profil" class="py-2.5 border-b border-cloud-200 dark:border-ink-800">About</a>
-    <a href="#pengalaman" class="py-2.5 border-b border-cloud-200 dark:border-ink-800">Experience</a>
-    <a href="#proyek" class="py-2.5 border-b border-cloud-200 dark:border-ink-800">Projects</a>
-    <a href="#skill" class="py-2.5 border-b border-cloud-200 dark:border-ink-800">Skills</a>
-    <a href="#kontak" class="py-2.5">Contact</a>
   </div>
 </header>
 
-<section id="home" class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
-  <div class="absolute -top-24 -right-24 w-[28rem] h-[28rem] rounded-full bg-amber-400/20 blur-3xl"></div>
-  <div class="absolute bottom-0 -left-24 w-72 h-72 rounded-full bg-moss-400/10 blur-3xl"></div>
-
-  <div id="top" class="max-w-6xl mx-auto px-6 md:px-10 relative grid lg:grid-cols-[1.15fr_0.85fr] gap-14 items-center">
+<section id="top" class="hero">
+  <div class="wrap hero-grid">
     <div>
-      <p class="reveal font-mono text-xs uppercase tracking-[0.25em] text-amber-600 mb-5">Personal Portfolio</p>
-      <h1 class="reveal font-display font-extrabold text-4xl sm:text-5xl md:text-6xl leading-[1.05] mb-6">
-        Hi, I'm <span class="grad-text">Vaya Zabrina<br class="hidden sm:block"/> Azahra</span>
-      </h1>
-      <p class="reveal text-base md:text-lg font-medium text-ink-900/70 dark:text-cloud-100/70 mb-5">
-        Machine Learning Enthusiast · Frontend Web Developer<br/>
-        <span class="text-sm font-normal">Open to entry-level opportunities</span>
+      <p class="eyebrow mono">Data Analysis · Machine Learning</p>
+      <h1>Halo, saya <em>Vaya Zabrina Azahra</em></h1>
+      <p class="lead">
+        Fresh graduate Informatika dari Universitas Ahmad Dahlan yang fokus pada
+        machine learning &amp; data analysis, dengan pengalaman riset computer vision
+        dan pengembangan web. Terbiasa mengolah data dari nol — mulai dari
+        preprocessing, eksplorasi, pemodelan, sampai evaluasi statistik.
       </p>
-      <p class="reveal text-ink-900/70 dark:text-cloud-100/70 leading-relaxed max-w-xl mb-9">
-        Fresh graduate Informatika dari Universitas Ahmad Dahlan dengan pengalaman langsung di
-        machine learning, computer vision, dan pengembangan web. Mengembangkan model hybrid CNN
-        dan Vision Transformer untuk klasifikasi citra pada riset skripsi, serta berpengalaman
-        sebagai Frontend Web Developer pada proyek website berskala internasional.
-      </p>
-
-      <div class="reveal flex flex-wrap gap-3 mb-10">
-        <a href="mailto:vzabrina8@gmail.com" class="inline-flex items-center gap-2 text-sm font-semibold px-6 py-3 rounded-full grad-btn text-white hover:opacity-90 transition-opacity">
-          Get in Touch
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-        <a href="#" class="inline-flex items-center gap-2 text-sm font-semibold px-6 py-3 rounded-full border border-ink-900/15 dark:border-cloud-100/15 hover:border-amber-500 transition-colors">
-          ⬇ Download CV
-        </a>
-        <a href="#" class="inline-flex items-center justify-center w-11 h-11 rounded-full border border-ink-900/15 dark:border-cloud-100/15 hover:border-amber-500 transition-colors" aria-label="GitHub">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.66.5 12.02c0 5.09 3.29 9.4 7.86 10.93.58.1.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.04-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.71 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 015.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.81 1.18 1.84 1.18 3.1 0 4.44-2.7 5.42-5.27 5.7.42.36.78 1.08.78 2.17 0 1.57-.02 2.83-.02 3.22 0 .31.2.67.8.56A10.53 10.53 0 0023.5 12.02C23.5 5.66 18.35.5 12 .5z"/></svg>
-        </a>
-        <a href="#" class="inline-flex items-center justify-center w-11 h-11 rounded-full border border-ink-900/15 dark:border-cloud-100/15 hover:border-amber-500 transition-colors" aria-label="LinkedIn">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.48 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.83v1.98h.05c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.14V23h-4v-6.6c0-1.57-.03-3.6-2.2-3.6-2.2 0-2.54 1.72-2.54 3.49V23h-4V8.5z"/></svg>
-        </a>
+      <div class="btnrow">
+        <a href="mailto:vzabrina8@gmail.com" class="btn-primary">Hubungi Saya</a>
+        <a href="#" class="btn-ghost">Unduh CV</a>
       </div>
-
-      <div class="reveal flex flex-wrap gap-8 border-t border-cloud-200 dark:border-ink-800 pt-7">
-        <div>
-          <p class="font-display font-bold text-2xl md:text-3xl">3.81</p>
-          <p class="text-xs text-ink-900/60 dark:text-cloud-100/60 mt-1">GPA out of 4.00</p>
-        </div>
-        <div>
-          <p class="font-display font-bold text-2xl md:text-3xl">2.640</p>
-          <p class="text-xs text-ink-900/60 dark:text-cloud-100/60 mt-1">Images Processed (Thesis)</p>
-        </div>
-        <div>
-          <p class="font-display font-bold text-2xl md:text-3xl">3+</p>
-          <p class="text-xs text-ink-900/60 dark:text-cloud-100/60 mt-1">Organizational Roles</p>
-        </div>
+      <div class="statrow">
+        <div class="stat"><b>3.81</b><span>IPK dari 4.00</span></div>
+        <div class="stat"><b>2.640</b><span>citra diproses (skripsi)</span></div>
+        <div class="stat"><b>3+</b><span>peran organisasi & asisten</span></div>
       </div>
     </div>
-
-    <div class="reveal flex justify-center lg:justify-end">
-      <div class="relative">
-        <div class="absolute -inset-3 rounded-full grad-ring opacity-70 blur-md"></div>
-        <div class="relative w-64 h-64 md:w-72 md:h-72 rounded-full overflow-hidden bg-white dark:bg-ink-900 border-4 border-cloud-50 dark:border-ink-950">
-          <!-- TODO: ganti src dengan foto profil asli, mis. "foto-profil.jpg" -->
-          <img src="https://placehold.co/600x600/F2EEE7/C2793D?font=montserrat&text=Foto+Profil" alt="Foto profil Vaya Zabrina Azahra" class="w-full h-full object-cover" />
-        </div>
-      </div>
+    <div class="photo-frame">
+      <!-- TODO: ganti src dengan foto profil asli, misal "foto-profil.jpg" -->
+      <img src="https://placehold.co/600x740/1E1828/C084D8?font=montserrat&text=Foto+Profil" alt="Foto profil Vaya Zabrina Azahra" />
     </div>
   </div>
 </section>
 
-<section id="profil" class="py-20 md:py-28 border-t border-cloud-200 dark:border-ink-800">
-  <div class="max-w-6xl mx-auto px-6 md:px-10">
-    <p class="reveal font-mono text-xs uppercase tracking-[0.25em] text-amber-600 mb-3">About Me</p>
-    <h2 class="reveal font-display font-bold text-3xl md:text-4xl mb-10 max-w-2xl">Profile &amp; Background</h2>
-
-    <div class="grid lg:grid-cols-[1.3fr_1fr] gap-12">
-      <p class="reveal text-ink-900/75 dark:text-cloud-100/75 leading-relaxed text-lg">
-        I'm an <span class="font-semibold text-ink-950 dark:text-cloud-50">Informatics graduate from
-        Universitas Ahmad Dahlan</span> with hands-on experience in machine learning, computer vision,
-        and web development. I developed a hybrid CNN and Vision Transformer model for image
-        classification in my thesis research, covering the full data-science pipeline — from
-        preprocessing and augmentation to model training and statistical evaluation.
-        <br/><br/>
-        Alongside my technical work, I have experience building responsive front-end interfaces using
-        Laravel, PHP, HTML, and CSS, and I bring a track record of leadership and financial management
-        from campus organizations. I enjoy solving problems methodically and collaborating across teams.
-      </p>
-
-      <div class="grid sm:grid-cols-1 gap-4">
-        <div class="reveal card rounded-2xl p-6">
-          <p class="font-mono text-[11px] uppercase tracking-wider text-amber-600 mb-2">Education</p>
-          <p class="font-display font-semibold">Bachelor of Informatics,<br/>Universitas Ahmad Dahlan</p>
-        </div>
-        <div class="reveal card rounded-2xl p-6">
-          <p class="font-mono text-[11px] uppercase tracking-wider text-amber-600 mb-2">Focus</p>
-          <p class="font-display font-semibold">Machine Learning, Computer Vision, and Web Development</p>
-        </div>
-        <div class="reveal card rounded-2xl p-6">
-          <p class="font-mono text-[11px] uppercase tracking-wider text-amber-600 mb-2">Strengths</p>
-          <p class="font-display font-semibold">Analytical thinking, attention to detail, fast learner</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="pengalaman" class="py-20 md:py-28 border-t border-cloud-200 dark:border-ink-800 bg-cloud-100/60 dark:bg-ink-900/40">
-  <div class="max-w-6xl mx-auto px-6 md:px-10">
-    <p class="reveal font-mono text-xs uppercase tracking-[0.25em] text-amber-600 mb-3">Track Record</p>
-    <h2 class="reveal font-display font-bold text-3xl md:text-4xl mb-4">Experience</h2>
-    <p class="reveal text-ink-900/65 dark:text-cloud-100/65 max-w-xl mb-10">
-      Pengalaman di bidang web development, organisasi, dan kepanitiaan kampus.
+<section id="about">
+  <div class="wrap">
+    <p class="sec-label mono">Tentang Saya</p>
+    <h2 class="sec-title">Latar belakang & fokus</h2>
+    <p style="color:var(--text-dim); max-width:680px;">
+      Saya lulusan Informatika Universitas Ahmad Dahlan dengan pengalaman langsung pada
+      machine learning dan computer vision melalui riset skripsi, serta pengalaman mengajar
+      sebagai asisten praktikum mata kuliah Sistem Cerdas. Selain itu saya juga pernah
+      terlibat dalam pengembangan frontend web dan pengelolaan keuangan organisasi kampus.
+      Saya senang menyelesaikan masalah secara terstruktur dan berbasis data.
     </p>
-
-    <div class="reveal flex flex-wrap gap-2 mb-10">
-      <button class="filter-btn active text-sm font-medium px-4 py-2 rounded-full border border-cloud-200 dark:border-ink-800 transition-colors" data-filter="all">All</button>
-      <button class="filter-btn text-sm font-medium px-4 py-2 rounded-full border border-cloud-200 dark:border-ink-800 transition-colors" data-filter="magang">Internship</button>
-      <button class="filter-btn text-sm font-medium px-4 py-2 rounded-full border border-cloud-200 dark:border-ink-800 transition-colors" data-filter="organisasi">Organization</button>
-      <button class="filter-btn text-sm font-medium px-4 py-2 rounded-full border border-cloud-200 dark:border-ink-800 transition-colors" data-filter="kepanitiaan">Committee</button>
-    </div>
-
-    <div id="expGrid" class="grid md:grid-cols-2 gap-6">
-      <div class="exp-card reveal card rounded-2xl overflow-hidden" data-cat="magang">
-        <!-- TODO: ganti src dengan foto kegiatan ASCEE asli -->
-        <img src="https://placehold.co/800x450/F2EEE7/C2793D?font=montserrat&text=Frontend+Web+Developer" alt="Dokumentasi kegiatan Frontend Web Developer di ASCEE" class="w-full h-44 object-cover" />
-        <div class="p-7">
-        <div class="flex items-center justify-between mb-3">
-          <span class="tag text-[11px] font-mono uppercase tracking-wider px-3 py-1 rounded-full">Internship · Aug – Dec 2025</span>
-        </div>
-        <h3 class="font-display font-semibold text-xl mb-1">Frontend Web Developer</h3>
-        <p class="text-sm text-amber-600 font-medium mb-4">ASCEE — Association for Scientific Computing, Electronics, and Engineering</p>
-        <p class="text-ink-900/70 dark:text-cloud-100/70 text-sm leading-relaxed mb-5">
-          Mengembangkan tampilan frontend website jurnal internasional, merancang antarmuka UI/UX
-          yang responsif, dan berkolaborasi dengan tim backend serta desainer untuk integrasi fitur.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="tag text-xs px-3 py-1 rounded-full">Laravel</span>
-          <span class="tag text-xs px-3 py-1 rounded-full">PHP</span>
-          <span class="tag text-xs px-3 py-1 rounded-full">HTML</span>
-          <span class="tag text-xs px-3 py-1 rounded-full">CSS</span>
-          <span class="tag text-xs px-3 py-1 rounded-full">Git/GitHub</span>
-        </div>
-        </div>
-      </div>
-
-      <div class="exp-card reveal card rounded-2xl overflow-hidden" data-cat="organisasi">
-        <!-- TODO: ganti src dengan foto kegiatan DPM FTI asli -->
-        <img src="https://placehold.co/800x450/F2EEE7/8FA06E?font=montserrat&text=Bendahara+Umum+DPM+FTI" alt="Dokumentasi kegiatan Bendahara Umum DPM FTI" class="w-full h-44 object-cover" />
-        <div class="p-7">
-        <div class="flex items-center justify-between mb-3">
-          <span class="tag text-[11px] font-mono uppercase tracking-wider px-3 py-1 rounded-full">Organization · 2024 – 2025</span>
-        </div>
-        <h3 class="font-display font-semibold text-xl mb-1">Bendahara Umum</h3>
-        <p class="text-sm text-amber-600 font-medium mb-4">Dewan Perwakilan Mahasiswa (DPM) FTI</p>
-        <p class="text-ink-900/70 dark:text-cloud-100/70 text-sm leading-relaxed mb-5">
-          Menyusun Rencana Anggaran Biaya (RAB) dan Laporan Pertanggungjawaban (LPJ), mengelola kas
-          organisasi, serta mengawasi anggaran program kerja tingkat fakultas berkoordinasi dengan
-          BEM dan HMPS.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="tag text-xs px-3 py-1 rounded-full">Financial Management</span>
-          <span class="tag text-xs px-3 py-1 rounded-full">Reporting</span>
-          <span class="tag text-xs px-3 py-1 rounded-full">Coordination</span>
-        </div>
-        </div>
-      </div>
-
-      <div class="exp-card reveal card rounded-2xl overflow-hidden" data-cat="kepanitiaan">
-        <!-- TODO: ganti src dengan foto kegiatan P2K asli -->
-        <img src="https://placehold.co/800x450/F2EEE7/D68A44?font=montserrat&text=Panitia+P2K" alt="Dokumentasi kegiatan Panitia P2K" class="w-full h-44 object-cover" />
-        <div class="p-7">
-        <div class="flex items-center justify-between mb-3">
-          <span class="tag text-[11px] font-mono uppercase tracking-wider px-3 py-1 rounded-full">Committee · 2023</span>
-        </div>
-        <h3 class="font-display font-semibold text-xl mb-1">Pendamping — Panitia P2K</h3>
-        <p class="text-sm text-amber-600 font-medium mb-4">Perkenalan Perguruan Tinggi, Universitas Ahmad Dahlan</p>
-        <p class="text-ink-900/70 dark:text-cloud-100/70 text-sm leading-relaxed mb-5">
-          Memimpin kelompok mahasiswa baru selama orientasi, membimbing pembuatan video perkenalan
-          yang meraih predikat <span class="font-semibold text-ink-950 dark:text-cloud-50">Best Video</span>,
-          serta mengajarkan penyusunan laporan harian kegiatan.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="tag text-xs px-3 py-1 rounded-full">Leadership</span>
-          <span class="tag text-xs px-3 py-1 rounded-full">Mentoring</span>
-        </div>
-        </div>
-      </div>
-
-      <div class="exp-card reveal card rounded-2xl p-7 flex flex-col justify-center items-start bg-gradient-to-br from-amber-500/10 to-transparent" data-cat="magang organisasi kepanitiaan">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C2793D" stroke-width="1.6" class="mb-4"><path d="M12 2l2.4 7.2H22l-6 4.6 2.3 7.2L12 16.8 5.7 21l2.3-7.2-6-4.6h7.6z"/></svg>
-        <h3 class="font-display font-semibold text-lg mb-2">Certifications</h3>
-        <p class="text-sm text-ink-900/70 dark:text-cloud-100/70 leading-relaxed">
-          Soft Skills Training Certificate Tahap I &amp; II — Universitas Ahmad Dahlan (2023 &amp; 2025)<br/>
-          Program Magang — ASCEE (2025)
-        </p>
-      </div>
-    </div>
   </div>
 </section>
 
-<section id="proyek" class="py-20 md:py-28 border-t border-cloud-200 dark:border-ink-800">
-  <div class="max-w-6xl mx-auto px-6 md:px-10">
-    <p class="reveal font-mono text-xs uppercase tracking-[0.25em] text-amber-600 mb-3">Selected Work</p>
-    <h2 class="reveal font-display font-bold text-3xl md:text-4xl mb-10">Projects</h2>
-
-    <div class="reveal card rounded-3xl mb-6 relative overflow-hidden">
-      <!-- TODO: ganti src dengan foto/diagram riset skripsi asli -->
-      <img src="https://placehold.co/1200x500/2A2219/E3A15E?font=montserrat&text=Klasifikasi+Sangrai+Biji+Kopi" alt="Ilustrasi riset klasifikasi tingkat sangrai biji kopi" class="w-full h-56 md:h-72 object-cover" />
-      <div class="p-8 md:p-10 relative">
-      <div class="absolute top-0 right-0 w-64 h-64 bg-amber-400/10 rounded-full blur-3xl"></div>
-      <span class="tag text-[11px] font-mono uppercase tracking-wider px-3 py-1 rounded-full">Thesis Project · Machine Learning</span>
-      <h3 class="font-display font-bold text-2xl md:text-3xl mt-4 mb-4 max-w-2xl">
-        Klasifikasi Tingkat Sangrai Biji Kopi — Hybrid CNN &amp; Vision Transformer
-      </h3>
-      <p class="text-ink-900/70 dark:text-cloud-100/70 leading-relaxed max-w-2xl mb-6">
-        Mengembangkan arsitektur hybrid dengan MobileNetV2 sebagai backbone, ditambah cabang CNN dan
-        Vision Transformer paralel yang menghasilkan performa klasifikasi lebih unggul dibanding
-        baseline MobileNetV2. Menangani seluruh alur data science: preprocessing dan augmentasi
-        dataset (2.640 citra), pelatihan model dua tahap, hingga evaluasi menggunakan confusion
-        matrix dan uji statistik (Paired Sample T-Test).
+<section id="thesis">
+  <div class="wrap">
+    <p class="sec-label mono">Proyek Unggulan</p>
+    <h2 class="sec-title">Skripsi — Klasifikasi Tingkat Sangrai Biji Kopi</h2>
+    <div class="feature-card">
+      <!-- TODO: ganti src dengan diagram arsitektur model / cuplikan hasil confusion matrix -->
+      <img class="feature-photo" src="https://placehold.co/1000x420/1A1522/8B5CF6?font=montserrat&text=Hybrid+CNN+%2B+Vision+Transformer" alt="Ilustrasi arsitektur model hybrid CNN dan Vision Transformer" />
+      <span class="feature-tag">Thesis Project · Machine Learning</span>
+      <h3>Hybrid CNN &amp; Vision Transformer untuk Klasifikasi Sangrai Biji Kopi</h3>
+      <p>
+        Mengembangkan arsitektur hybrid dengan MobileNetV2 sebagai backbone, ditambah cabang
+        CNN dan Vision Transformer paralel yang menghasilkan performa klasifikasi lebih unggul
+        dibanding baseline MobileNetV2. Menangani seluruh alur data science: preprocessing dan
+        augmentasi dataset (2.640 citra), pelatihan model dua tahap, hingga evaluasi menggunakan
+        confusion matrix dan uji statistik Paired Sample T-Test. Dibimbing oleh Dr. Murinto, S.Si., M.Kom.
       </p>
-      <div class="flex flex-wrap gap-2 mb-6">
-        <span class="tag text-xs px-3 py-1 rounded-full">Python</span>
-        <span class="tag text-xs px-3 py-1 rounded-full">TensorFlow/Keras</span>
-        <span class="tag text-xs px-3 py-1 rounded-full">CNN</span>
-        <span class="tag text-xs px-3 py-1 rounded-full">Vision Transformer</span>
-        <span class="tag text-xs px-3 py-1 rounded-full">MobileNetV2</span>
-        <span class="tag text-xs px-3 py-1 rounded-full">Statistical Testing</span>
+      <div class="pillrow">
+        <span class="pill">Python</span>
+        <span class="pill">TensorFlow / Keras</span>
+        <span class="pill">CNN</span>
+        <span class="pill">Vision Transformer</span>
+        <span class="pill">MobileNetV2</span>
+        <span class="pill">Statistical Testing</span>
       </div>
-      <a href="#" class="inline-flex items-center gap-2 text-sm font-semibold text-amber-600 hover:text-amber-500 transition-colors">
-        See Project ↗
-      </a>
+    </div>
+  </div>
+</section>
+
+<section id="sertifikasi">
+  <div class="wrap">
+    <p class="sec-label mono">Kredensial</p>
+    <h2 class="sec-title">Sertifikasi</h2>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <p class="yr mono">Cisco</p>
+        <!-- TODO: ganti dengan nama pelatihan Cisco yang sebenarnya, mis. "Networking Basics" -->
+        <h4>Pelatihan Cisco</h4>
+        <p>Sertifikat pelatihan Cisco yang relevan dengan fondasi teknis di bidang IT/data.</p>
+      </div>
+      <div class="cert-card">
+        <p class="yr mono">2025 · UAD</p>
+        <h4>Mendeley Application Utilization</h4>
+        <p>Sertifikat penggunaan aplikasi Mendeley untuk manajemen referensi riset.</p>
+      </div>
+      <div class="cert-card">
+        <p class="yr mono">2023 · UAD</p>
+        <h4>Soft Skills Training</h4>
+        <p>Pelatihan soft skills dari Universitas Ahmad Dahlan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pengalaman">
+  <div class="wrap">
+    <p class="sec-label mono">Rekam Jejak</p>
+    <h2 class="sec-title">Pengalaman</h2>
+
+    <div class="exp-item">
+      <p class="exp-date mono">UAD</p>
+      <div>
+        <h4>Asisten Praktikum</h4>
+        <p class="exp-org">Kecerdasan Buatan &amp; Strategi Algoritma, Universitas Ahmad Dahlan</p>
+        <!-- TODO: tambahkan detail semester/periode jika perlu -->
+        <p>Mendampingi jalannya praktikum mata kuliah Kecerdasan Buatan dan Strategi Algoritma,
+          membantu mahasiswa memahami materi dan mengerjakan tugas praktikum.</p>
       </div>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-6">
-      <div class="reveal card rounded-2xl overflow-hidden">
-        <!-- TODO: ganti src dengan screenshot website jurnal asli -->
-        <img src="https://placehold.co/800x450/F2EEE7/C2793D?font=montserrat&text=Journal+Website" alt="Screenshot website jurnal internasional" class="w-full h-44 object-cover" />
-        <div class="p-7">
-        <span class="tag text-[11px] font-mono uppercase tracking-wider px-3 py-1 rounded-full">Internship</span>
-        <h3 class="font-display font-semibold text-xl mt-4 mb-2">Journal Submission Website — Frontend</h3>
-        <p class="text-ink-900/70 dark:text-cloud-100/70 text-sm leading-relaxed mb-5">
-          Membangun tampilan frontend website jurnal internasional yang responsif, berkolaborasi
-          dengan tim backend dan desainer untuk integrasi fitur dan peningkatan kualitas produk.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="tag text-xs px-3 py-1 rounded-full">Laravel</span>
-          <span class="tag text-xs px-3 py-1 rounded-full">PHP</span>
-          <span class="tag text-xs px-3 py-1 rounded-full">HTML/CSS</span>
-        </div>
+    <div class="exp-item">
+      <p class="exp-date mono">Ags – Des 2025</p>
+      <div>
+        <h4>Frontend Web Developer</h4>
+        <p class="exp-org">ASCEE — Association for Scientific Computing, Electronics, and Engineering</p>
+        <p>Mengembangkan tampilan frontend untuk dua sistem website: journal submission system
+          untuk pengunggahan jurnal, dan website conference (mis. SAIN IJAIN) — merancang
+          antarmuka UI/UX yang responsif, dan berkolaborasi dengan tim backend serta desainer.</p>
+        <div class="pillrow">
+          <span class="pill">Laravel</span>
+          <span class="pill">PHP</span>
+          <span class="pill">HTML/CSS</span>
         </div>
       </div>
-      <div class="reveal card rounded-2xl overflow-hidden">
-        <!-- TODO: ganti src dengan foto dokumentasi kegiatan DPM FTI asli -->
-        <img src="https://placehold.co/800x450/F2EEE7/8FA06E?font=montserrat&text=Pengelolaan+Anggaran" alt="Dokumentasi pengelolaan anggaran DPM FTI" class="w-full h-44 object-cover" />
-        <div class="p-7">
-        <span class="tag text-[11px] font-mono uppercase tracking-wider px-3 py-1 rounded-full">Organization</span>
-        <h3 class="font-display font-semibold text-xl mt-4 mb-2">Pengelolaan Anggaran DPM FTI</h3>
-        <p class="text-ink-900/70 dark:text-cloud-100/70 text-sm leading-relaxed mb-5">
-          Menyusun dan mengawasi RAB serta LPJ untuk seluruh program kerja tingkat fakultas,
-          berkoordinasi rutin dengan bendahara organisasi lain seperti BEM dan HMPS.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="tag text-xs px-3 py-1 rounded-full">Budgeting</span>
-          <span class="tag text-xs px-3 py-1 rounded-full">Financial Reporting</span>
+    </div>
+
+    <div class="exp-item">
+      <p class="exp-date mono">2024 – 2025</p>
+      <div>
+        <h4>Bendahara Umum</h4>
+        <p class="exp-org">Dewan Perwakilan Mahasiswa (DPM) FTI</p>
+        <p>Menyusun RAB dan LPJ, mengelola kas organisasi, serta mengawasi anggaran program
+          kerja tingkat fakultas berkoordinasi dengan BEM dan HMPS.</p>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <p class="exp-date mono">2023</p>
+      <div>
+        <h4>Pendamping — Panitia P2K</h4>
+        <p class="exp-org">Pengenalan Perguruan Tinggi, Universitas Ahmad Dahlan</p>
+        <p>Memimpin kelompok mahasiswa baru selama orientasi, membimbing pembuatan video
+          perkenalan yang meraih predikat Best Video, serta mengajarkan penyusunan laporan harian.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skill">
+  <div class="wrap">
+    <p class="sec-label mono">Kemampuan</p>
+    <h2 class="sec-title">Skill &amp; Tools</h2>
+    <div class="skill-cols">
+      <div>
+        <h4>Data & Machine Learning</h4>
+        <div class="pillrow">
+          <span class="pill">Python</span>
+          <span class="pill">CNN</span>
+          <span class="pill">Vision Transformer</span>
+          <span class="pill">TensorFlow/Keras</span>
+          <span class="pill">Model Evaluation</span>
+          <span class="pill">Statistical Testing</span>
         </div>
+      </div>
+      <div>
+        <h4>Web Development</h4>
+        <div class="pillrow">
+          <span class="pill">Laravel</span>
+          <span class="pill">PHP</span>
+          <span class="pill">HTML</span>
+          <span class="pill">CSS</span>
+        </div>
+      </div>
+      <div>
+        <h4>Tools & Soft Skills</h4>
+        <div class="pillrow">
+          <span class="pill">Git/GitHub</span>
+          <span class="pill">Mendeley</span>
+          <span class="pill">Leadership</span>
+          <span class="pill">Financial Management</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="skill" class="py-20 md:py-28 border-t border-cloud-200 dark:border-ink-800 bg-cloud-100/60 dark:bg-ink-900/40">
-  <div class="max-w-6xl mx-auto px-6 md:px-10">
-    <p class="reveal font-mono text-xs uppercase tracking-[0.25em] text-amber-600 mb-3">Capabilities</p>
-    <h2 class="reveal font-display font-bold text-3xl md:text-4xl mb-10">Skills &amp; Tools</h2>
-
-    <div class="grid md:grid-cols-3 gap-8">
-      <div class="reveal">
-        <h3 class="font-display font-semibold text-lg mb-4">Hard Skills</h3>
-        <div class="flex flex-wrap gap-2">
-          <span class="tag text-sm px-3 py-1.5 rounded-full">Python</span>
-          <span class="tag text-sm px-3 py-1.5 rounded-full">CNN</span>
-          <span class="tag text-sm px-3 py-1.5 rounded-full">Vision Transformer</span>
-          <span class="tag text-sm px-3 py-1.5 rounded-full">TensorFlow/Keras</span>
-          <span class="tag text-sm px-3 py-1.5 rounded-full">Model Evaluation</span>
-          <span class="tag text-sm px-3 py-1.5 rounded-full">Laravel</span>
-          <span class="tag text-sm px-3 py-1.5 rounded-full">PHP</span>
-          <span class="tag text-sm px-3 py-1.5 rounded-full">HTML</span>
-          <span class="tag text-sm px-3 py-1.5 rounded-full">CSS</span>
-        </div>
-      </div>
-      <div class="reveal">
-        <h3 class="font-display font-semibold text-lg mb-4">Soft Skills</h3>
-        <div class="flex flex-wrap gap-2">
-          <span class="tag text-sm px-3 py-1.5 rounded-full">Leadership</span>
-          <span class="tag text-sm px-3 py-1.5 rounded-full">Financial Management</span>
-          <span class="tag text-sm px-3 py-1.5 rounded-full">Teamwork</span>
-          <span class="tag text-sm px-3 py-1.5 rounded-full">Attention to Detail</span>
-          <span class="tag text-sm px-3 py-1.5 rounded-full">Communication</span>
-          <span class="tag text-sm px-3 py-1.5 rounded-full">Fast Learner</span>
-        </div>
-      </div>
-      <div class="reveal">
-        <h3 class="font-display font-semibold text-lg mb-4">Tools I Use</h3>
-        <div class="flex flex-wrap gap-2">
-          <span class="tag text-sm px-3 py-1.5 rounded-full">Git</span>
-          <span class="tag text-sm px-3 py-1.5 rounded-full">GitHub</span>
-          <span class="tag text-sm px-3 py-1.5 rounded-full">Mendeley</span>
-        </div>
+<section id="kontak">
+  <div class="wrap">
+    <div class="contact-box">
+      <h3>Tertarik Berkolaborasi?</h3>
+      <p>Terbuka untuk peluang entry-level di bidang Machine Learning, Data Analysis, dan Web Development.</p>
+      <div class="contact-links">
+        <a href="mailto:vzabrina8@gmail.com">Email</a>
+        <a href="tel:085786422815">Telepon</a>
+        <a href="https://wa.me/6285786422815" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>
   </div>
 </section>
 
-<section id="kontak" class="py-20 md:py-28 border-t border-cloud-200 dark:border-ink-800">
-  <div class="max-w-6xl mx-auto px-6 md:px-10">
-    <p class="reveal font-mono text-xs uppercase tracking-[0.25em] text-amber-600 mb-3">Let's Connect</p>
-    <h2 class="reveal font-display font-bold text-3xl md:text-4xl mb-4">Contact</h2>
-    <p class="reveal text-ink-900/65 dark:text-cloud-100/65 max-w-lg mb-10">
-      Open to entry-level opportunities in Machine Learning, Computer Vision, and Web Development.
-    </p>
-
-    <div class="grid sm:grid-cols-3 gap-5 mb-14">
-      <a href="mailto:vzabrina8@gmail.com" class="reveal card rounded-2xl p-6">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C2793D" stroke-width="1.6" class="mb-4"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6 10-6"/></svg>
-        <p class="text-[11px] font-mono uppercase tracking-wider text-ink-900/50 dark:text-cloud-100/50 mb-1">Email</p>
-        <p class="font-semibold break-all">vzabrina8@gmail.com</p>
-      </a>
-      <a href="tel:085786422815" class="reveal card rounded-2xl p-6">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C2793D" stroke-width="1.6" class="mb-4"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.902.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.908.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        <p class="text-[11px] font-mono uppercase tracking-wider text-ink-900/50 dark:text-cloud-100/50 mb-1">Phone</p>
-        <p class="font-semibold">0857-8642-2815</p>
-      </a>
-      <a href="#" class="reveal card rounded-2xl p-6">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="#C2793D" class="mb-4"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.48 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.83v1.98h.05c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.14V23h-4v-6.6c0-1.57-.03-3.6-2.2-3.6-2.2 0-2.54 1.72-2.54 3.49V23h-4V8.5z"/></svg>
-        <p class="text-[11px] font-mono uppercase tracking-wider text-ink-900/50 dark:text-cloud-100/50 mb-1">LinkedIn</p>
-        <p class="font-semibold">Vaya Zabrina Azahra</p>
-      </a>
-    </div>
-
-    <div class="reveal rounded-3xl p-10 md:p-14 grad-btn text-white text-center relative overflow-hidden">
-      <h3 class="font-display font-bold text-2xl md:text-3xl mb-3">Interested in Working Together?</h3>
-      <p class="text-white/85 max-w-md mx-auto mb-8">
-        I'm open to entry-level opportunities in Machine Learning, Computer Vision, and Web Development.
-      </p>
-      <div class="flex flex-wrap justify-center gap-3">
-        <a href="mailto:vzabrina8@gmail.com" class="bg-white text-ink-950 font-semibold text-sm px-6 py-3 rounded-full hover:bg-cloud-100 transition-colors">
-          Send an Email
-        </a>
-        <a href="https://wa.me/6285786422815" target="_blank" rel="noopener" class="border border-white/50 text-white font-semibold text-sm px-6 py-3 rounded-full hover:bg-white/10 transition-colors">
-          Chat on WhatsApp
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer class="border-t border-cloud-200 dark:border-ink-800 py-8">
-  <div class="max-w-6xl mx-auto px-6 md:px-10 flex flex-col sm:flex-row justify-between items-center gap-4">
-    <p class="font-display font-semibold">Vaya Zabrina Azahra</p>
-    <div class="flex items-center gap-5 text-sm text-ink-900/60 dark:text-cloud-100/60">
-      <a href="mailto:vzabrina8@gmail.com" class="hover:text-amber-600 transition-colors">Email</a>
-      <a href="#" class="hover:text-amber-600 transition-colors">LinkedIn</a>
-      <a href="#" class="hover:text-amber-600 transition-colors">GitHub</a>
-    </div>
-    <p class="text-xs text-ink-900/50 dark:text-cloud-100/50">© 2026</p>
-  </div>
+<footer>
+  <div class="wrap">© 2026 Vaya Zabrina Azahra</div>
 </footer>
-
-<script>
-  const themeToggle = document.getElementById('themeToggle');
-  const iconMoon = document.getElementById('iconMoon');
-  const iconSun = document.getElementById('iconSun');
-  function applyTheme(dark) {
-    document.documentElement.classList.toggle('dark', dark);
-    iconMoon.classList.toggle('hidden', dark);
-    iconSun.classList.toggle('hidden', !dark);
-  }
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  applyTheme(prefersDark);
-  themeToggle.addEventListener('click', () => {
-    applyTheme(!document.documentElement.classList.contains('dark'));
-  });
-
-  const menuBtn = document.getElementById('menuBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
-  menuBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-    mobileMenu.classList.toggle('flex');
-  });
-  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    mobileMenu.classList.add('hidden'); mobileMenu.classList.remove('flex');
-  }));
-
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
-    });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-  const sections = ['profil','pengalaman','proyek','skill','kontak'].map(id => document.getElementById(id));
-  const navLinks = document.querySelectorAll('[data-nav]');
-  function onScroll() {
-    let currentId = 'home';
-    sections.forEach(sec => {
-      if (!sec) return;
-      const rect = sec.getBoundingClientRect();
-      if (rect.top <= 140 && rect.bottom >= 140) currentId = sec.id;
-    });
-    navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + currentId));
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const expCards = document.querySelectorAll('.exp-card');
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.dataset.filter;
-      expCards.forEach(card => {
-        const cats = card.dataset.cat.split(' ');
-        card.style.display = (filter === 'all' || cats.includes(filter)) ? '' : 'none';
-      });
-    });
-  });
-</script>
 
 </body>
 </html>
