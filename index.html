@@ -118,6 +118,16 @@
   .lightbox-next{ right:24px; }
   @media(max-width:600px){ .lightbox-nav{ width:36px; height:36px; font-size:18px; } .lightbox-prev{ left:8px; } .lightbox-next{ right:8px; } }
 
+  /* EMBED MODAL (dashboard Tableau interaktif) */
+  .embed-modal{ position:fixed; inset:0; background:rgba(9,7,12,0.92); z-index:210; display:none; align-items:center; justify-content:center; padding:24px; }
+  .embed-modal.open{ display:flex; }
+  .embed-box{ position:relative; width:min(1100px,100%); height:min(90vh,1450px); background:#fff; border-radius:10px; overflow:hidden; border:1px solid var(--line); }
+  .embed-scroll{ width:100%; height:100%; overflow:auto; }
+  .embed-scroll iframe{ display:block; width:100%; min-width:1000px; height:1400px; border:0; }
+  .embed-close{ position:absolute; top:10px; right:14px; z-index:2; width:36px; height:36px; border-radius:50%; border:1px solid var(--line); background:rgba(18,14,23,0.85); color:#fff; font-size:20px; cursor:pointer; padding:0; }
+  .embed-close:hover{ background:var(--violet); }
+  .gallery[data-embed]{ cursor:pointer; }
+
   /* SECTIONS */
   section{ padding:80px 0; border-top:1px solid var(--line); }
   .sec-label{ color:var(--plum); font-size:0.85rem; margin-bottom:8px; }
@@ -339,8 +349,8 @@
     <div class="project-grid">
 
       <div class="project-card">
-        <div class="gallery" data-gallery>
-          <img src="tableau_dashboard.png" alt="Order cancellation dashboard in Tableau" style="object-position:top;" />
+        <div class="gallery" data-gallery data-embed="https://public.tableau.com/views/AnalisisPembatalanOrderE-CommerceIndonesia/Dashboard1?:showVizHome=no&:embed=true">
+          <img src="https://public.tableau.com/static/images/An/AnalisisPembatalanOrderE-CommerceIndonesia/Dashboard1/1.png" alt="Order cancellation dashboard in Tableau" style="object-position:top;" />
         </div>
         <div class="gallery-dots" data-gallery-dots></div>
         <span class="feature-tag">Project · Data Analysis</span>
@@ -356,8 +366,9 @@
           <span class="pill">EDA</span>
         </div>
         <p class="project-note">Data: BakiTacos, Kaggle (CC BY-SA 4.0)</p>
-        <div>
-          <a class="btn-ghost btn-small" href="https://public.tableau.com/app/profile/vaya.zabrina.azahra/viz/AnalisisPembatalanOrderE-CommerceIndonesia/Dashboard1" target="_blank" rel="noopener">View live dashboard ↗</a>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <button type="button" class="btn-ghost btn-small" data-open-embed style="background:none; color:inherit; font-family:inherit; cursor:pointer;">Open interactive dashboard</button>
+          <a class="btn-ghost btn-small" href="https://public.tableau.com/app/profile/vaya.zabrina.azahra/viz/AnalisisPembatalanOrderE-CommerceIndonesia/Dashboard1" target="_blank" rel="noopener">Open on Tableau Public ↗</a>
         </div>
       </div>
 
@@ -645,6 +656,13 @@
   <div class="lightbox-nav lightbox-next" id="lightboxNext">&#10095;</div>
 </div>
 
+<div class="embed-modal" id="embedModal">
+  <div class="embed-box">
+    <button type="button" class="embed-close" id="embedClose" aria-label="Close dashboard">&times;</button>
+    <div class="embed-scroll"><iframe id="embedFrame" title="Tableau dashboard" src="about:blank"></iframe></div>
+  </div>
+</div>
+
 <script>
   // Placeholder kalau gambar belum ada di folder
   document.querySelectorAll('.gallery img, .photo-frame img').forEach(img => {
@@ -675,6 +693,21 @@
     function lbClose() { lightbox.classList.remove('open'); }
     function lbRel(d) { lbIndex = (lbIndex + d + lbImgs.length) % lbImgs.length; lbShow(); }
 
+    // modal dashboard Tableau interaktif
+    const embedModal = document.getElementById('embedModal');
+    const embedFrame = document.getElementById('embedFrame');
+    function openEmbed(url) { embedFrame.src = url; embedModal.classList.add('open'); }
+    function closeEmbed() { embedModal.classList.remove('open'); embedFrame.src = 'about:blank'; }
+    document.getElementById('embedClose').addEventListener('click', closeEmbed);
+    embedModal.addEventListener('click', e => { if (e.target === embedModal) closeEmbed(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && embedModal.classList.contains('open')) closeEmbed(); });
+    document.querySelectorAll('[data-open-embed]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const g = btn.closest('.project-card').querySelector('[data-embed]');
+        if (g) openEmbed(g.dataset.embed);
+      });
+    });
+
     document.getElementById('lightboxClose').addEventListener('click', lbClose);
     lightbox.addEventListener('click', e => { if (e.target === lightbox) lbClose(); });
     lbPrev.addEventListener('click', () => lbRel(-1));
@@ -701,6 +734,7 @@
       gallery.addEventListener('dragstart', e => e.preventDefault());
       gallery.addEventListener('click', e => {
         if (moved) return;
+        if (gallery.dataset.embed) { openEmbed(gallery.dataset.embed); return; }
         const i = slides.indexOf(e.target.closest('img'));
         if (i > -1) lbOpen(slides, i);
       });
